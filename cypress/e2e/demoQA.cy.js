@@ -2,7 +2,7 @@
 
 describe("Demo QA tests", () => {
     beforeEach(() => {
-        cy.visit("https://demoqa.com");
+        cy.visit('https://demoqa.com');
     })
     const expectedMenuItemNames = ["Elements", "Forms", "Alerts, Frame & Windows", "Widgets", "Interactions", "Book Store Application",]
     it("Verification menu item names", () => {
