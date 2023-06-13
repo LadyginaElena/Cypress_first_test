@@ -1,6 +1,7 @@
 ///<reference types="cypress"/>
 
 describe("Dropdown menu tests", () => {
+    const itemForSearch = "Item #25";
 
     it("Select State in Practice Form Demo QA", () => {
         cy.visit("https://demoqa.com/automation-practice-form")
@@ -11,21 +12,21 @@ describe("Dropdown menu tests", () => {
         су.visit("https://primereact.org/dropdown/")
         cy.get(".doc-main .py-3:nth-of-type(8) .p-dropdown").click()
 
-        function searchOption(level=0) {
+        function searchOption(item, level=0) {
             if (level>25){
                 throw new Error("Exceeded max recursion level")
             }
             cy.get(".doc-main .py-3:nth-of-type(8) .p-dropdown .p-dropdown-label").then(($el => {
                 const activeItem = $el.text();
-                if (activeItem != "Item #25") {
+                if (activeItem != item) {
                     cy.wrap($el).type("{downarrow}")
                     searchOption(++level)
                 }
                 cy.wrap($el).click()
             }))
         }
-        searchOption();
+        searchOption(itemForSearch);
         cy.get(".doc-main .py-3:nth-of-type(8) .p-dropdown .p-dropdown-label")
-        .should("have.text", "Item #25")
+        .should("have.text", itemForSearch)
     });
 })
