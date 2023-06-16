@@ -3,7 +3,7 @@
 describe("Dropdown menu tests", () => {
     const itemForSearch = "Item #25";
 
-    it("Select State in Practice Form Demo QA", () => {
+    it.skip("Select State in Practice Form Demo QA", () => {
         cy.visit("https://demoqa.com/automation-practice-form")
         cy.get("")
     });
